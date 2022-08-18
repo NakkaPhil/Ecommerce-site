@@ -77,9 +77,33 @@
     </header>
 
     <div class="cart--container hide" id="cart-container">
-      <div class="cart" id="cart">
+      <div class="cart">
         <div class="nav-close" id="close-cart">
           <i class="bx bx-x"></i>
+        </div>
+        <div class="title-box">
+          <h2 class="cart-title">My Cart</h2>
+        </div>
+        
+        <!--
+        
+        -->
+        <div class="cart-filled" id="cart">
+          <div class="cart-img">
+            <img src="./assets/images/empty-cart.png" alt="">
+          </div>
+          <div class="cart-empty">
+            <h2 class="empty-title">Your cart is empty</h2>
+            <p class="empty-p">You can add items to your cart by clicking on the '+' button on the product page.</p>
+          </div>
+        </div>
+        <div class="cart-total">
+          <div class="cart-items-couter">
+            <p class="items-couter" id="items-counter"></p>
+          </div>
+          <div class="cart-total">
+            <p class="total-cost" id="total-cost"></p>
+          </div>
         </div>
       </div>
     </div>

@@ -1,7 +1,5 @@
 import stock from '../db/db.js';
-
-//carrito:
-let carrito = []
+import { counter } from './couter.js';
 
 const loader = document.querySelector('.loader')
 
@@ -90,35 +88,113 @@ function showStock(stockArray) {
 
 }
 
-function botonesCarrito(botonesPrenda){
-    botonesPrenda.forEach((b, i) => {
+function botonesCarrito(botonesPrenda, accion= 'plus'){
+    botonesPrenda.forEach((b) => {
         b.addEventListener('click',() => {
 
             let productoId = parseInt(b.dataset.id);
+            let productoIndice = 0
             
-            let producto = stock.find((s) => s.id === productoId); 
+            let producto = stock.find((s) => {
+                productoIndice = stock.indexOf(s)
+                return s.id === productoId
+            }) 
             //Buscamos el objeto (producto seleccionado)
 
-            if(producto.quantity < 1){
-                producto.quantity = 0;
+            let cantidad = producto.quantity
+
+            if(accion == 'plus'){
+                if(producto.quantity < 1){
+                    producto.quantity = 0;
+                }else{
+                    producto.quantity -= 1;
+                    producto.selected++
+                }
             } else{
-                producto.quantity -= 1;
-                producto.selected++
+                if(producto.quantity > cantidad){
+                    producto.quantity = cantidad;
+                }else{
+                    producto.quantity += 1
+                    producto.selected--
+                }
 
-                carrito.push(producto);
-                console.log(carrito);
             }
-                stock.splice(i, 1, producto )
-                //Reemplazamos el objeto que está siendo tratado, por el nuevo que hemos modificado
-                
-                showStock(stock)
 
+            if(accion == 'remove-all'){
+                producto.quantity = cantidad
+                producto.selected = 0
+            }
+
+            stock.splice(productoIndice, 1, producto)
+            //Reemplazamos el objeto que está siendo tratado, por el nuevo que hemos modificado
+
+            agregarCarrito(stock) //stock iba aqui
+            
+            counter()
+
+            showStock(stock)
         })       
     })
 }
 
-    const counter = document.getElementById('cart-counter')
-    counter.textContent = localStorage.getItem('carrito')
+function agregarCarrito(paramStock){
+    let selected = []
+    //Cart en el html:
+    const cartDiv = document.getElementById('cart')
+    cartDiv.innerHTML = ``
+    
+    selected = paramStock.filter((p) => {
+        return p.selected > 0 
+    })
+    
+
+    let templateHTML = ``
+
+    selected.forEach(p => {
+        templateHTML += `
+          <div class="item-div">
+            <div class="item-img">
+              <img src="${p.image}" alt="img-${p.category}">
+            </div>
+            <div class="item-info">
+              <p class="item-name">
+                ${p.name}
+              </p>
+              <p class="item-desc">
+                <small>Stock: ${p.quantity} | $${p.price}.00</small>
+                <br>
+                <small>Subtotal: $${
+                    (p.selected * p.price)
+                }.00</small>
+              </p>
+              <div class="count-cart">
+                <button class="remove-btn" data-id="${p.id}">-</button>
+                <p class="item-counter">${p.selected} units</p>
+                <button class="add-btn" data-id="${p.id}">+</button>
+              </div>
+              
+            </div>
+            <div class="remove-all">
+              <button data-id="${p.id}" class="remove-all-btn">
+                <i class='bx bxs-trash'></i>
+              </button>
+            </div>
+          </div>`
+
+    })
+
+    cartDiv.innerHTML = templateHTML;
+    
+    
+    
+    const add_btn = document.querySelectorAll('.add-btn')
+    const remove_btn = document.querySelectorAll('.remove-btn')
+    const remove_all_btn = document.querySelectorAll('.remove-all-btn')
+    botonesCarrito(add_btn)
+    botonesCarrito(remove_btn, 'remove')
+    botonesCarrito(remove_all_btn, 'remove-all')
+    
+}
 
 
 
