@@ -1,0 +1,100 @@
+.main{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media(min-width:768px){
+    .main{
+        margin: 0 10%;
+        max-width: 1200px;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.div1{
+    flex: 1;
+    order: 1;
+}
+
+
+.div2{
+    flex: 2;
+    order: 2;
+    background-color: rgb(170, 37, 37);
+    height: 100vh;
+    position: relative;
+    top: -4rem;
+    z-index: -1;
+}
+
+.div3{
+    order: 3;
+    display: flex;
+    flex-direction: column;
+    margin: 0 5% 10rem 5%;
+}
+
+.div3-p{
+    font-size: 1.4rem;
+}
+
+.div3-price{
+    color: rgb(170, 37, 37);
+}
+
+.div3-acciones{
+    margin-top: 5rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+@media(min-width: 768px){
+    .div3-acciones{
+        display: block;
+    }
+}
+
+.div3-action1{
+    border: none;
+    background-color: hsl(0deg 6% 65%);
+    font-size: 1.2rem;
+    padding: 1rem;
+    box-shadow: 3px 2px 8px #302d2d;
+    margin-right: .5rem;
+}
+
+.div3-action2{
+    border: none;
+    background-color: rgb(56, 35, 35);
+    font-size: 1.2rem;
+    padding: 1.2rem;
+    box-shadow: 3px 2px 8px #302d2d;
+    font-weight: bold;
+    color: white;
+    transform: scale(1.1);
+}
+
+.div2-img{
+    width: 19rem;
+    margin-top: 8rem;
+}
+
+@media(min-width:768px){
+    .div1{
+        flex: 0;
+        order: 3;
+    }
+
+    .div2{
+        flex: 1;
+        order: 2;
+    }
+
+    .div3{
+        flex: 3;
+        order: 1;
+        margin: 10rem 0 0 0;
+    }
+}
+

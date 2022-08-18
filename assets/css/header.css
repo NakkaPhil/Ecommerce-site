@@ -1,0 +1,147 @@
+.loader{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--body-color);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+  }
+  
+  .loader--img{
+    width: 100px;
+    fill: var(--first-color);
+    animation: load 1.5s infinite;
+  }
+  
+  .hide{
+    display: none;
+  }
+  
+  .header{
+    position: fixed;
+    width: 100%;
+    background-color: transparent;
+  }
+  
+  .scroll-header{
+    background-color: var(--container-color);
+    box-shadow: 0px 2px 4px hsla(0, 4%, 15%, .10);
+    z-index: 5;
+  }
+  
+  .nav{
+    height: 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 1.5rem;
+    
+  }
+  
+  .nav--logo{ /* Logo academlo en barra menu */
+    width: 2.8rem;
+    fill: var(--first-color);
+  }
+  
+  .nav-logo{ /* Logo y texto*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 1rem;
+  }
+  
+  .nav--menu{
+    background-color: var(--body-color);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    padding: 6rem 2rem 3rem 2rem;
+    right: -100%;
+    transition: right .3s linear;
+  }
+  .nav--menu__show{
+    right: 0;
+  }
+  
+  .nav--list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2rem;
+  }
+  
+  .nav--item{
+    list-style: none;
+  }
+  
+  .nav--close, .bx-x{
+    font-size: 2rem;
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+  }
+  
+  .nav--btns{
+    display: flex;
+    align-items: center;
+    column-gap: 1.5rem;
+  }
+  
+  
+  .nav--cart{
+    position: relative;
+  }
+  
+  .counter{
+    background: var(--title-color);
+    position: absolute;
+    padding: 0.25rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: -5px;
+    right: -10px;
+    width: 1rem;
+    height: 1rem;
+    color: var(--body-color);
+    font-size: 10px;
+  }
+  
+  .cart--container{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgb(144, 140, 140, 0.65);
+    z-index: 4;
+  }
+  
+  .cart{
+    width: 100%;
+    height: 100%;
+    max-width: 450px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--container-color);
+    box-shadow: -14px 0px 4px rgb(147 147 147);
+  }
+  
+  @keyframes load{
+    0% {
+      transform: translateY( 0 );
+    }
+    50%{
+      transform: translateY( 10px );
+    }
+    100%{
+      transform: translateY( 0 );
+    }
+  }

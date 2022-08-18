@@ -1,0 +1,25 @@
+.footer{
+    background-color: var(--border-color);
+    padding: 5rem 15%;
+}
+
+.column-title{
+    margin-bottom: 1rem;
+}
+
+.column-p{
+    margin-bottom: .5rem;
+}
+
+.social-div{
+    display: flex;
+    gap: 1.1rem;
+}
+
+@media(min-width: 768px){
+    .footer{
+        display: flex;
+        justify-content: space-around;
+        padding: 10rem 0;
+    }
+}
