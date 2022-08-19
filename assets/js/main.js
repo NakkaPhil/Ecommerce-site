@@ -212,8 +212,8 @@ function agregarCarrito(paramStock){
     const add_btn = document.querySelectorAll('.add-btn')
     const remove_btn = document.querySelectorAll('.remove-btn')
     const remove_all_btn = document.querySelectorAll('.remove-all-btn')
-    console.log(add_cart_btn)
-    botonesCarrito(add_cart_btn)
+    
+    
     botonesCarrito(add_btn)
     botonesCarrito(remove_btn, 'remove')
     botonesCarrito(remove_all_btn, 'remove-all')
