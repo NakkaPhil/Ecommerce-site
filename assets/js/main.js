@@ -89,6 +89,29 @@ function showStock(stockArray) {
 }
 
 function botonesCarrito(botonesPrenda, accion= 'plus'){
+    /*if(botonesPrenda !== []){
+        botonesPrenda.addEventListener('click', ()=>{
+            let productoId = parseInt(botonesPrenda.dataset.id);
+            let productoIndice = 0
+            
+            let producto = stock.find((s) => {
+                productoIndice = stock.indexOf(s)
+                return s.id === productoId
+            })
+            
+            producto.quantity -= 1;
+            producto.selected++
+
+            stock.splice(productoIndice, 1, producto)
+            //Reemplazamos el objeto que está siendo tratado, por el nuevo que hemos modificado
+
+            agregarCarrito(stock) //stock iba aqui
+            
+            counter()
+
+            showStock(stock)
+        })
+    }*/
     botonesPrenda.forEach((b) => {
         b.addEventListener('click',() => {
 
@@ -185,11 +208,12 @@ function agregarCarrito(paramStock){
 
     cartDiv.innerHTML = templateHTML;
     
-    
-    
+    const add_cart_btn = document.querySelector('#add-cart-btn')
     const add_btn = document.querySelectorAll('.add-btn')
     const remove_btn = document.querySelectorAll('.remove-btn')
     const remove_all_btn = document.querySelectorAll('.remove-all-btn')
+    console.log(add_cart_btn)
+    botonesCarrito(add_cart_btn)
     botonesCarrito(add_btn)
     botonesCarrito(remove_btn, 'remove')
     botonesCarrito(remove_all_btn, 'remove-all')
